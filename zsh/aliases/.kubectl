@@ -1,0 +1,8 @@
+
+# Kube8
+alias k='kubectl'
+alias kb='kustomize build .'
+alias kx='kubectx'
+alias kns='kubens'
+alias agk='alias | grep kubectl | grep '
+alias agks='alias | grep kustomize | grep '

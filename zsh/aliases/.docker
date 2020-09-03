@@ -1,0 +1,9 @@
+
+# Docker
+alias dgc='docker rmi $(docker images -qf "dangling=true")'
+alias dim='docker images --format "table {{.Repository}}\\t{{.Tag}}\\t{{.ID}}\\t{{.Size}}\\t{{.CreatedSince}}"'
+alias dls='docker ps -a --format "table {{.Names}}\\t{{.Image}}\\t{{.Status}}\\t{{ .Ports }}\\t{{.RunningFor}}\\t{{.Command}}\\t{{ .ID }}" | cut -c-$(tput cols)'
+alias dps='docker ps --format "table {{.Names}}\\t{{.Image}}\\t{{.Status}}\\t{{ .Ports }}\\t{{.RunningFor}}\\t{{.Command}}\\t{{ .ID }}" | cut -c-$(tput cols)'
+alias dtop='docker stats $(docker ps --format="{{.Names}}")'
+alias dvc='docker volume ls -qf dangling=true | xargs docker volume rm'
+alias agd='alias | grep docker | grep ' 

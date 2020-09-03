@@ -1,0 +1,20 @@
+
+alias a='alias'
+alias dut='du -hsx * | sort -rh | head -10'
+# Navigation 
+alias ..='cd ..'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias tl='tree -L'
+# try env
+alias trym='mongo -u root -p tIebwGgTh2'
+alias 'vim=vim'
+alias 'v=nvim'
+# py alias
+alias 'pip=pip3'
+alias 'python=python3'
+
+# vimtutor
+alias vimts='vim -M  ~/.vimtsum'
+alias vimt='vimtutor'
