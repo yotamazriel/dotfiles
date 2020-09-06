@@ -7,7 +7,7 @@ Plug 'junegunn/seoul256.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "nerdtree menue"
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'MarSoft/nerdtree-grep-plugin'
-Plug 'preservim/nerdtree'
+Plug 'preervim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "editing"
@@ -24,6 +24,7 @@ Plug 'sbdchd/neoformat'
 " Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/SimpylFold'
 Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-surround'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "git"
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
