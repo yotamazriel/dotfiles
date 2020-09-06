@@ -19,9 +19,13 @@ antigen bundles <<EOBUNDLES
   osx
   zsh-users/zsh-syntax-highlighting
   docker
+  terraform
 EOBUNDLES
 antigen apply
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+
+RPROMPT=$'%{$fg[white]%}$(tf_prompt_info)%{$reset_color%}'
+
