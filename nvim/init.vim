@@ -7,7 +7,8 @@ Plug 'junegunn/seoul256.vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "nerdtree menue"
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'MarSoft/nerdtree-grep-plugin'
-Plug 'preervim/nerdtree'
+"Plug 'preervim/nerdtree'
+Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "editing"
@@ -33,6 +34,7 @@ Plug 'airblade/vim-gitgutter'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "fzf"
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "python"
 Plug 'davidhalter/jedi-vim'
@@ -64,6 +66,8 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-[> :tabp<CR>
 nnoremap <C-]> :tabn<CR>
 
+:map <C-j> cw<C-r>0<ESC>
+
 " diff
 nnoremap <C-d> :windo diffthis<CR>
 nnoremap <C-s> :diffoff!<CR>
@@ -73,8 +77,8 @@ let g:highlightedyank_highlight_duration = 1000
 hi HighlightedyankRegion cterm=reverse gui=reverse
 
 """""""""""""""""""""""""""""""""""""""" "tmhedberg/SimpylFold"
-let g:SimpylFold_docstring_preview = 1
-"let b:SimpylFold_fold_docstring = 0
+let g:SimpylFold_docstring_preview = 0
+let b:SimpylFold_fold_docstring = 0
 let g:SimpylFold_fold_docstring = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "nerdtree menue"
@@ -90,11 +94,20 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+"""""""""""""""""""""""""""""""""""""""" "Xuyuanp/nerdtree-git-plugin"
+let g:NERDTreeGitStatusShowIgnored = 1
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "fzf"
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'Ag -g ""'
 map <Leader>f :Files<CR>
 map <Leader>t :Ag<CR>
 nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
+
+"""""""""""""""""""""""""""""""""""""""" "mileszs/ack.vim"
+"let g:ackprg = 'rg --nogroup --nocolor --column'
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "python"
 """""""""""""""""""""""""""""""""""""""" "deoplete.nvim"

@@ -1,4 +1,5 @@
 
+# TODO: Review "https://kubernetes.io/docs/reference/kubectl/cheatsheet/"
 # Kube8
 alias k='kubectl'
 alias kb='kustomize build .'
