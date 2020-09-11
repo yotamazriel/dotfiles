@@ -47,7 +47,7 @@ Plug 'SkyLeach/pudb.vim'
 
 call plug#end()
 
-let mapleader="\\"
+let mapleader=";"
 set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "theme" 
@@ -57,6 +57,7 @@ set noswapfile
 """""""""""""""""""""""""""""""""""""""" "vim-airline/vim-airline-themes"
  " This is disabled by default; add the following to your vimrc to enable the extension:
 let g:airline#extensions#tabline#enabled = 1
+
 "Separators can be configured independently for the tabline, so here is how you can define "straight" tabs:
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -74,6 +75,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
 " tab navigation
 nnoremap <C-[> :tabp<CR>
 nnoremap <C-]> :tabn<CR>
@@ -88,6 +90,7 @@ set updatetime=100
 " diff
 nnoremap <C-d> :windo diffthis<CR>
 nnoremap <C-s> :diffoff!<CR>
+
 """""""""""""""""""""""""""""""""""""""" "machakann/vim-highlightedyankAA"
 " set highlight duration time to 1000 ms, i.e., 1 second
 let g:highlightedyank_highlight_duration = 1000
@@ -105,7 +108,7 @@ let NERDTreeQuitOnOpen = 1
 " make nerdtree prettier
 let NERDTreeMinimalUI = 1
 " show hidden files (dotfiles)
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
 " open a NERDTree automatically when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
@@ -161,11 +164,17 @@ if has('nvim')
   let g:pudb_breakpoint_symbol='☠'
 endif
 
+nnoremap <leader>S :PUDBSetEntrypoint <CR>
+nnoremap <leader>B :PUDBToggleBreakPoint <CR>
+"nnoremap <leader>T :let g:pudb_entry_point='test' <CR>
+nnoremap <leader>D :PUDBLaunchDebuggerTab <CR>
+let $PY_CONFIG= "/Users/yotamazriel/Documents/config.yaml"
+
 """""""""""""""""""""""""""""""""""""""" "davidhalter/jedi-vim"
 " disable autocompletion, cause we use deoplete for completion
 let g:jedi#completions_enabled = 0
 " open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
+let g:jedi#use_splits_not_buffers = ""
 
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
@@ -175,6 +184,7 @@ let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
+
 """""""""""""""""""""""""""""""""""""""" "neomake/neomake"
 let g:neomake_python_enabled_makers = ['pylint']
 call neomake#configure#automake('nrwi', 500)
