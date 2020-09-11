@@ -30,6 +30,8 @@ Plug 'tpope/vim-surround'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "git"
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'APZelos/blamer.nvim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "fzf"
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -41,6 +43,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'neomake/neomake'
+Plug 'SkyLeach/pudb.vim'
 
 call plug#end()
 let mapleader="\\"
@@ -66,7 +69,12 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-[> :tabp<CR>
 nnoremap <C-]> :tabn<CR>
 
-:map <C-j> cw<C-r>0<ESC>
+:map <C-n> cw<C-r>0<ESC>
+
+" autoload changed files
+set autoread
+au FocusGained,BufEnter * checktime
+set updatetime=100
 
 " diff
 nnoremap <C-d> :windo diffthis<CR>
@@ -97,6 +105,13 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 """""""""""""""""""""""""""""""""""""""" "Xuyuanp/nerdtree-git-plugin"
 let g:NERDTreeGitStatusShowIgnored = 1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "git"
+"""""""""""""""""""""""""""""""""""""""" "APZelos/blamer.nvim"
+let g:blamer_enabled = 1
+let g:blamer_delay = 500
+let g:blamer_template = '<committer>, <committer-time> • <commit-short> • <summary>'
+let g:blamer_prefix = ' <<< '
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "fzf"
 let $FZF_DEFAULT_COMMAND = 'Ag -g ""'
 map <Leader>f :Files<CR>
@@ -124,6 +139,18 @@ let g:neoformat_basic_format_retab = 1
 
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
+"""""""""""""""""""""""""""""""""""""""" "SkyLeach/pudb.vim"
+" Nvim python environment settings
+if has('nvim')
+  let g:python_host_prog='/Users/yotamazriel/.pyenv/shims/python'
+  let g:python3_host_prog='/Users/yotamazriel/.pyenv/shims/python'
+  " set the virtual env python used to launch the debugger
+  let g:pudb_python=':h nvim-python/Users/yotamazriel/.pyenv/shims/python'
+  " set the entry point (script) to use for pudb
+  let g:pudb_entry_point='~/src/poweruser_tools/test/test_templates.py'
+  " Unicode symbols work fine (nvim, iterm, tmux, nyovim tested)
+  let g:pudb_breakpoint_symbol='☠'
+endif
 
 """""""""""""""""""""""""""""""""""""""" "davidhalter/jedi-vim"
 " disable autocompletion, cause we use deoplete for completion

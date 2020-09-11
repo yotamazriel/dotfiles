@@ -12,8 +12,8 @@ alias trym='mongo -u root -p tIebwGgTh2'
 alias 'vim=vim'
 alias 'v=nvim'
 # py alias
-alias 'pip=pip3'
-alias 'python=python3'
+#alias 'pip=pip3'
+#alias 'python=python3'
 
 # vimtutor
 alias vimts='vim -M  ~/.vimtsum'

@@ -1,6 +1,6 @@
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/yotamazriel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yotamazriel/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -28,4 +28,5 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 RPROMPT=$'%{$fg[white]%}$(tf_prompt_info)%{$reset_color%}'
-
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
