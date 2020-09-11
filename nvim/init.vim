@@ -46,7 +46,9 @@ Plug 'neomake/neomake'
 Plug 'SkyLeach/pudb.vim'
 
 call plug#end()
+
 let mapleader="\\"
+set noswapfile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "theme" 
 :syntax on
