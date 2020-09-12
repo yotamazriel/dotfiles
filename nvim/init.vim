@@ -49,6 +49,7 @@ call plug#end()
 
 let mapleader=";"
 set noswapfile
+nnoremap <leader>O :only<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "theme" 
 :syntax on
