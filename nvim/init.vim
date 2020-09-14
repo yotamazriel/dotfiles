@@ -23,7 +23,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sbdchd/neoformat'
 " Plug 'terryma/vim-multiple-cursors'
-Plug 'tmhedberg/SimpylFold'
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-surround'
 
@@ -97,11 +96,6 @@ nnoremap <C-s> :diffoff!<CR>
 let g:highlightedyank_highlight_duration = 1000
 hi HighlightedyankRegion cterm=reverse gui=reverse
 
-"""""""""""""""""""""""""""""""""""""""" "tmhedberg/SimpylFold"
-let g:SimpylFold_docstring_preview = 0
-let b:SimpylFold_fold_docstring = 0
-let g:SimpylFold_fold_docstring = 0
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "nerdtree menue"
 map <C-o> :NERDTreeToggle<CR>
 " close nerdtree on file open
@@ -152,6 +146,7 @@ let g:neoformat_basic_format_retab = 1
 
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
+
 """""""""""""""""""""""""""""""""""""""" "SkyLeach/pudb.vim"
 " Nvim python environment settings
 if has('nvim')
