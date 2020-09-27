@@ -1,0 +1,3 @@
+
+alias gcpsp="gcloud projects list --format=json |   jq -c  '.[].name' -r | fzf | xargs gcloud config set project"
+alias gcplit="gcloud container images list | fzf --preview='echo {} | xargs  gcloud container images list-tags' | xargs  gcloud container images list-tags --limit=15"
