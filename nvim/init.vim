@@ -122,7 +122,8 @@ let g:blamer_prefix = ' <<< '
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "fzf"
 let $FZF_DEFAULT_COMMAND = 'Ag -g ""'
 map <Leader>f :Files<CR>
-map <Leader>t :Ag<CR>
+map <Leader>T :Ag<CR>
+map <Leader>t :Ag<space>
 nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
@@ -138,6 +139,7 @@ let g:deoplete#enable_at_startup = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set splitbelow
 let g:airline_theme='<theme>' " <theme> is a valid theme name
+
 " Enable alignmentdavidhalter/jedi-vimdavidhalter/jedi-vimdavidhalter/jedi-vim
 let g:neoformat_basic_format_align = 1
 
