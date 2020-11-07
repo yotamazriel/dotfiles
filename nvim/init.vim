@@ -80,7 +80,7 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap <C-[> :tabp<CR>
 nnoremap <C-]> :tabn<CR>
 
-:map <C-n> cw<C-r>0<ESC>
+map <C-n> ciw<C-r>0<ESC>
 
 " autoload changed files
 set autoread
