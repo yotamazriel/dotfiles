@@ -97,7 +97,9 @@ let g:highlightedyank_highlight_duration = 1000
 hi HighlightedyankRegion cterm=reverse gui=reverse
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "nerdtree menue"
-map <C-o> :NERDTreeToggle<CR>
+map <Leader>o :NERDTreeToggle<CR>
+nmap <Leader>H :NERDTreeFind<CR>
+
 " close nerdtree on file open
 let NERDTreeQuitOnOpen = 1
 " make nerdtree prettier
