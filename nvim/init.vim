@@ -168,9 +168,11 @@ let $PY_CONFIG= "/Users/yotamazriel/Documents/config.yaml"
 
 """""""""""""""""""""""""""""""""""""""" "davidhalter/jedi-vim"
 " disable autocompletion, cause we use deoplete for completion
-let g:jedi#completions_enabled = 0
+let g:jedi#completions_enabled = 1
 " open the go-to function in split, not another buffer
-let g:jedi#use_splits_not_buffers = ""
+"let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#show_call_signatures = "1"
 
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>g"
