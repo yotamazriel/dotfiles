@@ -91,6 +91,12 @@ set updatetime=100
 nnoremap <C-d> :windo diffthis<CR>
 nnoremap <C-s> :diffoff!<CR>
 
+" easier clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+
+noremap <Leader>w <C-w>200>
+
 """""""""""""""""""""""""""""""""""""""" "machakann/vim-highlightedyankAA"
 " set highlight duration time to 1000 ms, i.e., 1 second
 let g:highlightedyank_highlight_duration = 1000
