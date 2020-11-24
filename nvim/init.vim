@@ -95,7 +95,7 @@ nnoremap <C-s> :diffoff!<CR>
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 
-noremap <Leader>w <C-w>200>
+noremap <Leader>w <C-w>200><C-w>200+
 
 """""""""""""""""""""""""""""""""""""""" "machakann/vim-highlightedyankAA"
 " set highlight duration time to 1000 ms, i.e., 1 second
