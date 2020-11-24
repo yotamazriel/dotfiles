@@ -30,3 +30,6 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 RPROMPT=$'%{$fg[white]%}$(tf_prompt_info)%{$reset_color%}'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+export VISUAL=nvim
+export EDITOR="$VISUAL"
