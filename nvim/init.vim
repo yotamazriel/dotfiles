@@ -43,6 +43,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'neomake/neomake'
 Plug 'SkyLeach/pudb.vim'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 call plug#end()
 
@@ -156,6 +157,25 @@ let g:neoformat_basic_format_retab = 1
 
 " Enable trimmming of trailing whitespace
 let g:neoformat_basic_format_trim = 1
+"let g:deoplete#auto_complete_delay = 100
+
+"""""""""""""""""""""""""""""""""""""""" "numirias/semshi"
+nmap <silent> <leader>rr :Semshi rename<CR>
+
+nmap <silent> <Tab> :Semshi goto name next<CR>
+nmap <silent> <S-Tab> :Semshi goto name prev<CR>
+
+nmap <silent> <leader>gc :Semshi goto class next<CR>
+nmap <silent> <leader>gC :Semshi goto class prev<CR>
+
+nmap <silent> <leader>gf :Semshi goto function next<CR>
+nmap <silent> <leader>gF :Semshi goto function prev<CR>
+
+nmap <silent> <leader>gu :Semshi goto unresolved first<CR>
+nmap <silent> <leader>gp :Semshi goto parameterUnused first<CR>
+
+nmap <silent> <leader>ee :Semshi error<CR>
+nmap <silent> <leader>ge :Semshi goto error<CR>
 
 """""""""""""""""""""""""""""""""""""""" "SkyLeach/pudb.vim"
 " Nvim python environment settings
