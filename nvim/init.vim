@@ -3,6 +3,7 @@ call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/seoul256.vim'
+"Plug 'elzr/vim-json'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "nerdtree menue"
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
