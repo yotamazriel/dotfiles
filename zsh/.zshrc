@@ -33,3 +33,27 @@ export LANG=en_US.UTF-8
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+f3() {
+  if [[ "$1" == '' ]]; then
+    gcs_path=$(gsutil ls $1 | fzf --tac)
+  else
+    gcs_path=$((echo '..' && gsutil ls $1) | fzf --tac)
+  fi
+  if [[ "$gcs_path" == '..' ]]; then
+    gcs_path=$(dirname $1)/
+  fi
+  if [[ "$gcs_path" == 'gs:/' ]]; then
+    f3
+  elif [[ "$gcs_path" =~ '^.*/$' ]]; then
+    f3 $gcs_path
+  elif [[ "$gcs_path" != '' ]]; then
+    gsutil cp $gcs_path -
+  fi
+}
+
+gctx() {
+  gcloud config set project $(gcloud projects list --format=json | jq -r  '.[].projectId' | fzf)
+}
