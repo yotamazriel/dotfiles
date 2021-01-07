@@ -121,7 +121,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 """""""""""""""""""""""""""""""""""""""" "Xuyuanp/nerdtree-git-plugin"
-let g:NERDTreeGitStatusShowIgnored = 1
+"let g:NERDTreeGitStatusShowIgnored = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "git"
 """""""""""""""""""""""""""""""""""""""" "APZelos/blamer.nvim"
