@@ -82,3 +82,28 @@ gfix() {
     git stash pop
   fi
 }
+
+wfw() {
+  context='gke_tensorleap-ops3_us-central1-c_ops-cluster'
+  workflow=$1
+  if [[ -z $workflow ]]; then
+    workflow=$(argo list --running --context $context | tail -n +2 | fzf --reverse --height=10 | cut -f 1 -d " ")
+  fi
+  if [ $workflow = "all" ]; then
+    workflow=$(argo list --context $context | tail -n +2 | fzf --reverse --height=10 | cut -f 1 -d " ")
+  fi
+  argo watch --context $context $workflow
+}
+
+wfl() {
+  context='gke_tensorleap-ops3_us-central1-c_ops-cluster'
+  workflow=$1
+  if [[ -z $workflow ]]; then
+    workflow=$(argo list --running --context $context | tail -n +2 | fzf --reverse --height=10 | cut -f 1 -d " ")
+  fi
+  if [ $workflow = "all" ]; then
+    workflow=$(argo list --context $context | tail -n +2 | fzf --reverse --height=10 | cut -f 1 -d " ")
+  fi
+  argo logs --context $context $workflow -f
+}
+
