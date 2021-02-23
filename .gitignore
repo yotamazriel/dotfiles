@@ -1,5 +1,6 @@
 *.local
 .DS_Store
+tfplan
 nvim/.netrwhist
 nvim/plugged/
 
