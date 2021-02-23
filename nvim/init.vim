@@ -40,6 +40,7 @@ Plug 'mileszs/ack.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "python"
 Plug 'davidhalter/jedi-vim'
+Plug 'alfredodeza/pytest.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-jedi'
 Plug 'neomake/neomake'
@@ -222,7 +223,6 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
-"""""""""""""""""""""""""""""""""""""""" "neomake/neomake"
 "let g:neomake_python_enabled_makers = ['pylint']
 "call neomake#configure#automake('nrwi', 500)
 function! GotoJump()
@@ -238,3 +238,13 @@ function! GotoJump()
     endif
   endif
 endfunction
+
+" DiffView
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
