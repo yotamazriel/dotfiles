@@ -140,10 +140,11 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "git"
 """""""""""""""""""""""""""""""""""""""" "APZelos/blamer.nvim"
-let g:blamer_enabled = 1
-let g:blamer_delay = 500
+let g:blamer_enabled = 0
+let g:blamer_delay = 200
 let g:blamer_template = '<committer>, <committer-time> • <commit-short> • <summary>'
 let g:blamer_prefix = ' <<< '
+map <C-b> :BlamerToggle <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "fzf"
 let $FZF_DEFAULT_COMMAND = 'Ag -g ""'
@@ -230,8 +231,28 @@ let g:jedi#usages_command = "<leader>n"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#rename_command = "<leader>r"
 
-"let g:neomake_python_enabled_makers = ['pylint']
-"call neomake#configure#automake('nrwi', 500)
+"""""""""""""""""""""""""""""""""""""""" "neomake/neomake"
+let g:neomake_python_pylint_maker = {
+  \ 'args': [
+  \ '-d', 'C0103, C0111, C0301, R0903',
+  \ '-f', 'text',
+  \ '--msg-template="{path}:{line}:{column}:{C}: [{symbol}] {msg}"',
+  \ '-r', 'n'
+  \ ],
+  \ 'errorformat':
+  \ '%A%f:%l:%c:%t: %m,' .
+  \ '%A%f:%l: %m,' .
+  \ '%A%f:(%l): %m,' .
+  \ '%-Z%p^%.%#,' .
+  \ '%-G%.%#',
+  \ }
+
+let g:neomake_python_enabled_makers = ['flake8', 'pylint']
+call neomake#configure#automake('nrwi', 50)
+map <leader>ll :lopen <CR>
+map <leader>ln :lnext <CR>
+map <leader>lp :lprev <CR>
+
 function! GotoJump()
   jumps
   let j = input("Please select your jump: ")
