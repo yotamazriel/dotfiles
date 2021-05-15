@@ -47,6 +47,13 @@ Plug 'neomake/neomake'
 Plug 'SkyLeach/pudb.vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "ts"
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "javascript"
+Plug 'pangloss/vim-javascript'
+
 call plug#end()
 
 let mapleader=";"
@@ -248,3 +255,11 @@ function! s:DiffWithSaved()
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
 com! DiffSaved call s:DiffWithSaved()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "javascript"
+" Enables syntax highlighting for JSDocs
+let g:javascript_plugin_jsdoc = 1
+
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
