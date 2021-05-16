@@ -3,12 +3,10 @@ call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/seoul256.vim'
-"Plug 'elzr/vim-json'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "nerdtree menue"
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'MarSoft/nerdtree-grep-plugin'
-"Plug 'preervim/nerdtree'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
@@ -38,11 +36,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "lsp"
+Plug 'neoclide/coc.nvim', {'branch': 'release' }
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "python"
-Plug 'davidhalter/jedi-vim'
 Plug 'alfredodeza/pytest.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
 Plug 'neomake/neomake'
 Plug 'SkyLeach/pudb.vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
@@ -57,6 +55,7 @@ Plug 'pangloss/vim-javascript'
 call plug#end()
 
 let mapleader=";"
+runtime coc.vim
 set noswapfile
 nnoremap <leader>O :only<CR>
 
@@ -160,23 +159,6 @@ command! -bang -nargs=? -complete=dir Files
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "python"
-"""""""""""""""""""""""""""""""""""""""" "deoplete.nvim"
-let g:deoplete#enable_at_startup = 1
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-set splitbelow
-let g:airline_theme='<theme>' " <theme> is a valid theme name
-
-" Enable alignmentdavidhalter/jedi-vimdavidhalter/jedi-vimdavidhalter/jedi-vim
-let g:neoformat_basic_format_align = 1
-
-" Enable tab to spaces conversion
-let g:neoformat_basic_format_retab = 1
-
-" Enable trimmming of trailing whitespace
-let g:neoformat_basic_format_trim = 1
-"let g:deoplete#auto_complete_delay = 100
-
 """""""""""""""""""""""""""""""""""""""" "numirias/semshi"
 nmap <silent> <leader>rr :Semshi rename<CR>
 
@@ -213,23 +195,6 @@ nnoremap <leader>B :PUDBToggleBreakPoint <CR>
 "nnoremap <leader>T :let g:pudb_entry_point='test' <CR>
 nnoremap <leader>D :PUDBLaunchDebuggerTab <CR>
 let $PY_CONFIG= "/Users/yotamazriel/Documents/config.yaml"
-
-"""""""""""""""""""""""""""""""""""""""" "davidhalter/jedi-vim"
-" disable autocompletion, cause we use deoplete for completion
-let g:jedi#completions_enabled = 1
-" open the go-to function in split, not another buffer
-"let g:jedi#use_tabs_not_buffers = 1
-let g:jedi#use_splits_not_buffers = "left"
-let g:jedi#show_call_signatures = "1"
-
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
 
 """""""""""""""""""""""""""""""""""""""" "neomake/neomake"
 let g:neomake_python_pylint_maker = {
