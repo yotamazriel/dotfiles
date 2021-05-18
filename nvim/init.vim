@@ -4,11 +4,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/seoul256.vim'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "nerdtree menue"
-Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-Plug 'MarSoft/nerdtree-grep-plugin'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "ranger"
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "editing"
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
@@ -114,28 +112,14 @@ noremap <Leader>p "*p
 noremap <Leader>w <C-w>200><C-w>200+
 noremap <Leader>fj :%!jq .<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "ranger"
+let g:ranger_map_keys = 0
+map <leader>o :Ranger<CR>
+
 """""""""""""""""""""""""""""""""""""""" "machakann/vim-highlightedyankAA"
 " set highlight duration time to 1000 ms, i.e., 1 second
 let g:highlightedyank_highlight_duration = 1000
 hi HighlightedyankRegion cterm=reverse gui=reverse
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "nerdtree menue"
-map <Leader>o :NERDTreeToggle<CR>
-nmap <Leader>H :NERDTreeFind<CR>
-
-" close nerdtree on file open
-let NERDTreeQuitOnOpen = 1
-" make nerdtree prettier
-let NERDTreeMinimalUI = 1
-" show hidden files (dotfiles)
-let NERDTreeShowHidden = 1
-" open a NERDTree automatically when vim starts up if no files were specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-"""""""""""""""""""""""""""""""""""""""" "Xuyuanp/nerdtree-git-plugin"
-"let g:NERDTreeGitStatusShowIgnored = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "git"
 """""""""""""""""""""""""""""""""""""""" "APZelos/blamer.nvim"
