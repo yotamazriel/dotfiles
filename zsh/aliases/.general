@@ -1,4 +1,5 @@
 
+alias rr='ranger'
 alias a='alias'
 alias dut='du -hsx * | sort -rh | head -10'
 # Navigation 

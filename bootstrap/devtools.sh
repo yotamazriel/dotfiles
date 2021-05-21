@@ -1,4 +1,5 @@
 brew install cmake
+brew install ranger
 brew install zsh
 brew install trash
 brew install tmux

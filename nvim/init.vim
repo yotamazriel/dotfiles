@@ -9,6 +9,9 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'MarSoft/nerdtree-grep-plugin'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "ranger"
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "editing"
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
@@ -115,6 +118,10 @@ noremap <Leader>p "*p
 noremap <Leader>w <C-w>200><C-w>200+
 noremap <Leader>fj :%!jq .<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "ranger"
+let g:ranger_map_keys = 0
+map rr :Ranger<CR>
+
 """""""""""""""""""""""""""""""""""""""" "machakann/vim-highlightedyankAA"
 " set highlight duration time to 1000 ms, i.e., 1 second
 let g:highlightedyank_highlight_duration = 1000
@@ -161,7 +168,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "python"
 """""""""""""""""""""""""""""""""""""""" "numirias/semshi"
-nmap <silent> <leader>rr :Semshi rename<CR>
+nmap <silent> <leader>RR :Semshi rename<CR>
 
 nmap <silent> <Tab> :Semshi goto name next<CR>
 nmap <silent> <S-Tab> :Semshi goto name prev<CR>
