@@ -44,6 +44,7 @@ Plug 'alfredodeza/pytest.vim'
 Plug 'neomake/neomake'
 Plug 'SkyLeach/pudb.vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'cespare/vim-toml'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "ts"
 Plug 'leafgarland/typescript-vim'
