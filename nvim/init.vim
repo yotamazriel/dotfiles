@@ -107,10 +107,6 @@ set autoread
 au FocusGained,BufEnter * checktime
 set updatetime=100
 
-" diff
-nnoremap <C-d> :windo diffthis<CR>
-nnoremap <C-s> :diffoff!<CR>
-
 " easier clipboard
 noremap <Leader>y "*y
 noremap <Leader>p "*p
