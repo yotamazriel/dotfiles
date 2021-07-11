@@ -142,6 +142,10 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "let g:NERDTreeGitStatusShowIgnored = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "git"
+"""""""""""""""""""""""""""""""""""""""" "airblade/vim-gitgutter"
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
 """""""""""""""""""""""""""""""""""""""" "APZelos/blamer.nvim"
 let g:blamer_enabled = 0
 let g:blamer_delay = 200
