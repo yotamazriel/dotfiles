@@ -198,7 +198,7 @@ nnoremap <leader>S :PUDBSetEntrypoint <CR>
 nnoremap <leader>B :PUDBToggleBreakPoint <CR>
 "nnoremap <leader>T :let g:pudb_entry_point='test' <CR>
 nnoremap <leader>D :PUDBLaunchDebuggerTab <CR>
-let $PY_CONFIG= "/Users/yotamazriel/Documents/config.yaml"
+let $PY_CONFIG= "/Users/yotamazriel/config/engine/config.yaml"
 
 """""""""""""""""""""""""""""""""""""""" "neomake/neomake"
 let g:neomake_python_pylint_maker = {
