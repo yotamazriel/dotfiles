@@ -36,6 +36,9 @@ export EDITOR="$VISUAL"
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
+# Add leatherman
+source /Users/yotamazriel/repos/leatherman/source-me.sh
+
 f3() {
   if [[ "$1" == '' ]]; then
     gcs_path=$(gsutil ls $1 | fzf --tac)
