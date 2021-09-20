@@ -193,6 +193,7 @@ let $FZF_DEFAULT_COMMAND = 'Ag -g ""'
 map <Leader>f :Files<CR>
 map <Leader>T :Ag<CR>
 map <Leader>t :Ag<space>
+map <Leader>wt yiw:Ag<space><C-r>0<CR>
 nnoremap <silent> <expr> <Leader><Leader> (expand('%') =~ 'NERD_tree' ? "\<c-w>\<c-w>" : '').":FZF\<cr>"
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', '~/.vim/plugged/fzf.vim/bin/preview.sh {}']}, <bang>0)
