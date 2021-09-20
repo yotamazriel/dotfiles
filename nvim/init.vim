@@ -83,6 +83,20 @@ nnoremap <leader>wfw :FloatermNew! --wintype=float --name=gfix --autoclose=2 wfw
 nnoremap <leader>wfl :FloatermNew! --wintype=float --name=gfix --autoclose=2 wfl<CR>
 nnoremap <leader>ard :FloatermNew! --wintype=float --height=0.3 --name=gfix --autoclose=2 --position=bottomright deploy-head<CR>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "CICD"
+
+function! DeployCurrentRevision()
+  let env = input("Please select environment: ")
+  let gitBranch=trim(system("git rev-parse --abbrev-ref HEAD"))
+  let gitCommit=trim(system("git rev-parse HEAD | cut -c 1-8 "))
+  let repo=trim(system("basename $PWD"))
+  let tag = join([gitBranch, gitCommit], '-')
+  echo "argo submit --from wftmpl/deploy-".repo." -p env-name=".env." -p tag=".tag
+  let result = confirm("Sure?")
+  call system("argo submit --from wftmpl/deploy-".repo." -p env-name=".env." -p tag=".tag)
+  execute :FloatermNew! --wintype=float --name=gfix --autoclose=2 wfw<CR>
+endfunction
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "theme" 
 :syntax on
