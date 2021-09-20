@@ -1,4 +1,8 @@
 call plug#begin()
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "terminal"
+Plug 'voldikss/vim-floaterm'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "theme"
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -62,6 +66,23 @@ let mapleader=";"
 runtime coc.vim
 set noswapfile
 nnoremap <leader>O :only<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "terminal"
+"""""""""""""""""""""""""""""""""""""""" "voldikss/vim-floaterm"
+nnoremap <leader>fr :FloatermNew --height=0.6 --width=0.4 --wintype=float --name=floaterm1 --position=topleft --autoclose=2 ranger --cmd="cd ~"<CR>
+" Configuration example
+let g:floaterm_keymap_new    = '<Space>fn'
+let g:floaterm_keymap_prev   = '<Space>fp'
+let g:floaterm_keymap_next   = '<Space>fk'
+let g:floaterm_keymap_toggle = '<Space>ff'
+let g:floaterm_keymap_kill   = '<Space>fc'
+nnoremap <leader>ft :FloatermNew --wintype=float --name=tig --autoclose=2 tig<CR>
+nnoremap <leader>gx :FloatermNew! --wintype=float --name=gfix --autoclose=2 gfix<CR>
+nnoremap <leader>gc :FloatermNew! --wintype=float --name=gfix --autoclose=2 gc<CR>
+nnoremap <leader>wfw :FloatermNew! --wintype=float --name=gfix --autoclose=2 wfw<CR>
+nnoremap <leader>wfl :FloatermNew! --wintype=float --name=gfix --autoclose=2 wfl<CR>
+nnoremap <leader>ard :FloatermNew! --wintype=float --height=0.3 --name=gfix --autoclose=2 --position=bottomright deploy-head<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "theme" 
 :syntax on
