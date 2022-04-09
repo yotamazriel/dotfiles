@@ -36,8 +36,13 @@ export EDITOR="$VISUAL"
 
 export PATH="$HOME/.poetry/bin:$PATH"
 
+# aws
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/usr/local/bin/aws_completer' aws
+
 # Add leatherman
-source /Users/yotamazriel/repos/leatherman/source-me.sh
+source ~/repos/leatherman/source-me.sh
 
 f3() {
   if [[ "$1" == '' ]]; then
@@ -53,13 +58,39 @@ f3() {
   elif [[ "$gcs_path" =~ '^.*/$' ]]; then
     f3 $gcs_path
   elif [[ "$gcs_path" != '' ]]; then
-    #gsutil cp $gcs_path -
-    echo $gcs_path
+    gsutil cp $gcs_path -
+    #echo $gcs_path
   fi
 }
 
 gctx() {
   gcloud config set project $(gcloud projects list --format=json | jq -r  '.[].projectId' | fzf)
+}
+
+gpick() {
+  rev=$1
+  branch=$(git branch | fzf --reverse --height=10 | cut -d ' ' -f 1)
+
+  if [[ -z $rev ]]; then
+    rev=$(git log $branch --oneline | fzf --reverse --height=10 | cut -d ' ' -f 1)
+  fi
+
+  if [[ -z $rev ]]; then
+    return 0
+  fi
+
+  git commit --fixup $rev
+
+  CHANGED=$(git diff-index --name-only HEAD --)
+  if [[ -n $CHANGED ]]; then
+    git stash push
+  fi
+
+  git cherry-pick $rev^
+
+  if [[ -n $CHANGED ]]; then
+    git stash pop
+  fi
 }
 
 gfix() {
