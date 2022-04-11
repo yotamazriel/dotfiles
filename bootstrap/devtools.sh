@@ -24,3 +24,11 @@ brew install octant
 # install nvm and latest node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 brew install gh
+brew install helm
+brew install watch
+brew install kapp
+brew install kubectx
+brew install buntu/microk8s/microk8s
+brew install kubectl
+brew install tig
+brew install adamrodger/tap/gctx

@@ -7,7 +7,7 @@ cd ..
 rm -rf fonts
 
 # install iterm
-ITERM_SYNC_DIR="${HOME}/.dotfiles/iterm"
+ITERM_SYNC_DIR="${HOME}/repos/dotfiles/iterm"
 brew install iterm2 --cask
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool TRUE
 defaults write com.googlecode.iterm2 PrefsCustomFolder $ITERM_SYNC_DIR
