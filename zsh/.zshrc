@@ -3,9 +3,11 @@ export NVM_DIR="$HOME/.nvm"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/yotamazriel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yotamazriel/google-cloud-sdk/path.zsh.inc'; fi
+/opt/homebrew/etc/profile.d/z.sh
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/yotamazriel/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yotamazriel/google-cloud-sdk/completion.zsh.inc'; fi
+$(brew --prefix)/etc/profile.d/z.sh
 
 source <(kubectl completion zsh)
 # Arik stuff 
@@ -43,7 +45,11 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # Add leatherman
 source ~/repos/leatherman/source-me.sh
-
+#p
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 f3() {
   if [[ "$1" == '' ]]; then
     gcs_path=$(gsutil ls $1 | fzf --tac)
