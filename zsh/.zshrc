@@ -1,17 +1,22 @@
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/yotamazriel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yotamazriel/google-cloud-sdk/path.zsh.inc'; fi
-/opt/homebrew/etc/profile.d/z.sh
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/yotamazriel/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yotamazriel/google-cloud-sdk/completion.zsh.inc'; fi
 $(brew --prefix)/etc/profile.d/z.sh
 
 source <(kubectl completion zsh)
-# Arik stuff 
-source /usr/local/share/antigen/antigen.zsh
+ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
+## Load Antigen
+source "$HOME/repos/dotfiles/zsh/antigen.zsh"
+# Load Antigen configurations
+antigen init ~/.antigenrc
+
 export DEFAULT_USER=yotamazriel # for agnoster theme
 antigen use oh-my-zsh
 antigen theme agnoster
