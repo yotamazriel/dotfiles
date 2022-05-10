@@ -50,7 +50,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'alfredodeza/pytest.vim'
 Plug 'neomake/neomake'
 Plug 'SkyLeach/pudb.vim'
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 Plug 'cespare/vim-toml'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "ts"
