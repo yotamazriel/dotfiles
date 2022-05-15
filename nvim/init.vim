@@ -50,7 +50,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release' }
 Plug 'alfredodeza/pytest.vim'
 Plug 'neomake/neomake'
 Plug 'SkyLeach/pudb.vim'
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
+"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 Plug 'cespare/vim-toml'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "ts"
@@ -203,23 +203,23 @@ command! -bang -nargs=? -complete=dir Files
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "python"
-"""""""""""""""""""""""""""""""""""""""" "numirias/semshi"
-nmap <silent> <leader>RR :Semshi rename<CR>
+""""""""""""""""""""""""""""""""""""""""" "numirias/semshi"
+"nmap <silent> <leader>RR :Semshi rename<CR>
 
-nmap <silent> <Tab> :Semshi goto name next<CR>
-nmap <silent> <S-Tab> :Semshi goto name prev<CR>
+"nmap <silent> <Tab> :Semshi goto name next<CR>
+"nmap <silent> <S-Tab> :Semshi goto name prev<CR>
 
-nmap <silent> <leader>gc :Semshi goto class next<CR>
-nmap <silent> <leader>gC :Semshi goto class prev<CR>
+"nmap <silent> <leader>gc :Semshi goto class next<CR>
+"nmap <silent> <leader>gC :Semshi goto class prev<CR>
 
-nmap <silent> <leader>gf :Semshi goto function next<CR>
-nmap <silent> <leader>gF :Semshi goto function prev<CR>
+"nmap <silent> <leader>gf :Semshi goto function next<CR>
+"nmap <silent> <leader>gF :Semshi goto function prev<CR>
 
-nmap <silent> <leader>gu :Semshi goto unresolved first<CR>
-nmap <silent> <leader>gp :Semshi goto parameterUnused first<CR>
+"nmap <silent> <leader>gu :Semshi goto unresolved first<CR>
+"nmap <silent> <leader>gp :Semshi goto parameterUnused first<CR>
 
-nmap <silent> <leader>ee :Semshi error<CR>
-nmap <silent> <leader>ge :Semshi goto error<CR>
+"nmap <silent> <leader>ee :Semshi error<CR>
+"nmap <silent> <leader>ge :Semshi goto error<CR>
 
 """""""""""""""""""""""""""""""""""""""" "SkyLeach/pudb.vim"
 " Nvim python environment settings

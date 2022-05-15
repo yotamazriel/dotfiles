@@ -1,4 +1,5 @@
 brew install cmake
+brew install brew-cask-completion
 brew install tfenv
 brew install ranger
 brew install zsh

@@ -1,0 +1,25 @@
+# load oh-my-zsh
+antigen use oh-my-zsh
+
+# use custom plugin
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+
+# load the theme
+#export DEFAULT_USER=yotamazriel # for agnoster theme
+#antigen theme agnoster
+antigen theme milon/arrow-zsh-theme
+
+
+# use oh-my-zsh plugin
+antigen bundles <<EOBUNDLES
+  git
+  z
+  osx
+  zsh-users/zsh-syntax-highlighting
+  docker
+  terraform
+EOBUNDLES
+
+# apply antigen changes
+antigen apply

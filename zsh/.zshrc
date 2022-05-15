@@ -7,7 +7,7 @@ if [ -f '/Users/yotamazriel/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yot
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/yotamazriel/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yotamazriel/google-cloud-sdk/completion.zsh.inc'; fi
-$(brew --prefix)/etc/profile.d/z.sh
+source $(brew --prefix)/etc/profile.d/z.sh
 
 source <(kubectl completion zsh)
 ZSH_THEME="robbyrussell"
@@ -17,18 +17,6 @@ source "$HOME/repos/dotfiles/zsh/antigen.zsh"
 # Load Antigen configurations
 antigen init ~/.antigenrc
 
-export DEFAULT_USER=yotamazriel # for agnoster theme
-antigen use oh-my-zsh
-antigen theme agnoster
-antigen bundles <<EOBUNDLES
-  git
-  z
-  osx
-  zsh-users/zsh-syntax-highlighting
-  docker
-  terraform
-EOBUNDLES
-antigen apply
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 autoload -U +X bashcompinit && bashcompinit
@@ -185,4 +173,9 @@ wfl() {
   fi
   argo logs --context $context $workflow -f
 }
+
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+autoload -Uz compinit
+compinit
+
 
