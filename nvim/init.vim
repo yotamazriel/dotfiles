@@ -1,5 +1,13 @@
 call plug#begin()
 
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'Shougo/ddc.vim'
+Plug 'shun/ddc-vim-lsp'
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "terminal"
 Plug 'voldikss/vim-floaterm'
 
@@ -44,13 +52,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "lsp"
-Plug 'neoclide/coc.nvim', {'branch': 'release' }
+"Plug 'neoclide/coc.nvim', {'branch': 'release' }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "python"
 Plug 'alfredodeza/pytest.vim'
 Plug 'neomake/neomake'
 Plug 'SkyLeach/pudb.vim'
-"Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins', 'for': 'python' }
 Plug 'cespare/vim-toml'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "ts"
@@ -62,8 +69,46 @@ Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'allowlist': ['python'],
+        \ })
+endif
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> ;d <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
 let mapleader=";"
-runtime coc.vim
+"runtime coc.vim
 set noswapfile
 nnoremap <leader>O :only<CR>
 
@@ -203,24 +248,6 @@ command! -bang -nargs=? -complete=dir Files
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "python"
-""""""""""""""""""""""""""""""""""""""""" "numirias/semshi"
-"nmap <silent> <leader>RR :Semshi rename<CR>
-
-"nmap <silent> <Tab> :Semshi goto name next<CR>
-"nmap <silent> <S-Tab> :Semshi goto name prev<CR>
-
-"nmap <silent> <leader>gc :Semshi goto class next<CR>
-"nmap <silent> <leader>gC :Semshi goto class prev<CR>
-
-"nmap <silent> <leader>gf :Semshi goto function next<CR>
-"nmap <silent> <leader>gF :Semshi goto function prev<CR>
-
-"nmap <silent> <leader>gu :Semshi goto unresolved first<CR>
-"nmap <silent> <leader>gp :Semshi goto parameterUnused first<CR>
-
-"nmap <silent> <leader>ee :Semshi error<CR>
-"nmap <silent> <leader>ge :Semshi goto error<CR>
-
 """""""""""""""""""""""""""""""""""""""" "SkyLeach/pudb.vim"
 " Nvim python environment settings
 if has('nvim')
