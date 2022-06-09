@@ -2,10 +2,10 @@ call plug#begin()
 
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'Shougo/ddc.vim'
-Plug 'shun/ddc-vim-lsp'
+"Plug 'prabirshrestha/asyncomplete.vim'
+"Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"Plug 'Shougo/ddc.vim'
+"Plug 'shun/ddc-vim-lsp'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "terminal"
@@ -69,6 +69,10 @@ Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
+let mapleader=";"
+set noswapfile
+nnoremap <leader>O :only<CR>
+
 if executable('pyls')
     " pip install python-language-server
     au User lsp_setup call lsp#register_server({
@@ -82,7 +86,7 @@ function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> ;d <plug>(lsp-definition)
+    nmap <buffer> <leader>d <plug>(lsp-definition)
     nmap <buffer> gs <plug>(lsp-document-symbol-search)
     nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
     nmap <buffer> gr <plug>(lsp-references)
@@ -107,10 +111,6 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
-let mapleader=";"
-"runtime coc.vim
-set noswapfile
-nnoremap <leader>O :only<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" "terminal"
 """""""""""""""""""""""""""""""""""""""" "voldikss/vim-floaterm"
