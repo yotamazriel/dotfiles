@@ -1,3 +1,4 @@
+export DISABLE_REPORTING=true
 USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export PATH="${PATH}:${HOME}/.krew/bin"
 export NVM_DIR="$HOME/.nvm"
